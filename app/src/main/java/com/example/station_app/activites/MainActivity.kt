@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.station_app.StationDepartureAdapter
+import com.example.station_app.adapters.StationDepartureAdapter
 import com.example.station_app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

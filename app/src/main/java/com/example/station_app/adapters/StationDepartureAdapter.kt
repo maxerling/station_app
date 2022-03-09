@@ -1,11 +1,11 @@
-package com.example.station_app;
+package com.example.station_app.adapters;
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import com.example.station_app.R
 
 class StationDepartureAdapter: RecyclerView.Adapter<StationDepartureAdapter.StationDepartureViewHolder>()  {
 
