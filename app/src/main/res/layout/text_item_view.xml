@@ -6,42 +6,44 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:id="@+id/station_departure"
+
     >
 
     <TextView
         android:id="@+id/departure_time"
+        style="@style/station_departure_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:padding="8dp"
         tools:text="palce"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
 
 
     <TextView
         android:id="@+id/destination"
+        style="@style/station_departure_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:padding="8dp"
         tools:text="palce"
         app:layout_constraintStart_toEndOf="@id/departure_time"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+
         />
 
 
     <TextView
         android:id="@+id/track_no"
+        style="@style/station_departure_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:padding="8dp"
         tools:text="palce"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
