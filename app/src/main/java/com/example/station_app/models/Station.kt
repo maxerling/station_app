@@ -1,6 +1,6 @@
 package com.example.station_app.models
 
-class Station( name : String) {
-    val name = name
+data class Station(val name : String) {
+
 
 }

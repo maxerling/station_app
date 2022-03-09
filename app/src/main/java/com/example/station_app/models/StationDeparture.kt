@@ -1,10 +1,7 @@
 package com.example.station_app.models;
 
-class StationDeparture(station : Station, finalDestination : String, departureTime : String, trackNumber :String ) {
-     val station = station;
-     val departureTime = departureTime;
-     val finalDestination = finalDestination;
-     val trackNumber = trackNumber;
+data class StationDeparture(val station : Station, val finalDestination : String, val departureTime : String, val trackNumber :String ) {
+
 
 
 }

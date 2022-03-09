@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.station_app">
+    package="com.example.station_app" >
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Station_app">
         <activity
             android:name=".activites.MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
