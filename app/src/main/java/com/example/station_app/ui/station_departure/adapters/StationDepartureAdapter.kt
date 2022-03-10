@@ -21,7 +21,6 @@ class StationDepartureAdapter :
 
 
     class StationDepartureViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var dd: TextView = view.findViewById(R.id.action_bar)
         var departureTime: TextView = view.findViewById(R.id.departure_time)
         var destination: TextView = view.findViewById(R.id.destination)
         var trackNumber: TextView = view.findViewById(R.id.track_no)
