@@ -11,6 +11,7 @@ import com.example.station_app.databinding.ActivityMainBinding
 import com.google.gson.Gson
 
 private val TAG = "MainAcitivty"
+
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 " </QUERY>\n" +
                 "</REQUEST>"
 
-        val response = client.postTF(requestBody);
+        client.postTF(requestBody);
 
         setContentView(binding.root)
         recyclerView = binding.recyclerView

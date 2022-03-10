@@ -1,0 +1,30 @@
+package com.example.station_app.api.responses.Trafikverket.train_announcement
+
+data class TrainAnnouncement(
+    val ActivityId: String,
+    val ActivityType: String,
+    val Advertised: Boolean,
+    val AdvertisedTimeAtLocation: String,
+    val AdvertisedTrainIdent: String,
+    val Canceled: Boolean,
+    val Deleted: Boolean,
+    val Deviation: List<String>,
+    val EstimatedTimeIsPreliminary: Boolean,
+    val FromLocation: List<FromLocation>,
+    val InformationOwner: String,
+    val LocationSignature: String,
+    val ModifiedTime: String,
+    val NewEquipment: Int,
+    val OtherInformation: List<String>,
+    val PlannedEstimatedTimeAtLocationIsValid: Boolean,
+    val ProductInformation: List<String>,
+    val ScheduledDepartureDateTime: String,
+    val TechnicalTrainIdent: String,
+    val TimeAtLocation: String,
+    val ToLocation: List<ToLocation>,
+    val TrackAtLocation: String,
+    val TypeOfTraffic: String,
+    val ViaToLocation: List<ViaToLocation>,
+    val WebLink: String,
+    val WebLinkName: String
+)
