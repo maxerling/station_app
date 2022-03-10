@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Station_app">
         <activity
-            android:name=".activites.MainActivity"
+            android:name="com.example.station_app.ui.station_departure.activites.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

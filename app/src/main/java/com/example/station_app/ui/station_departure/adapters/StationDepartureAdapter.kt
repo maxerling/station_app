@@ -1,21 +1,24 @@
-package com.example.station_app.adapters;
+package com.example.station_app.ui.station_departure.adapters;
 
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.example.station_app.R
+import com.example.station_app.api.ApiClient
+import io.github.cdimascio.dotenv.dotenv
+import okhttp3.OkHttp
+import okhttp3.OkHttpClient
 
 class StationDepartureAdapter: RecyclerView.Adapter<StationDepartureAdapter.StationDepartureViewHolder>()  {
 
 
-        private val data = ('A').rangeTo('C').toList()
-
+    private val data = ('A').rangeTo('C').toList()
+    private val TAG = "StationDepartureAdapter"
 
 
     class StationDepartureViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -33,6 +36,7 @@ class StationDepartureAdapter: RecyclerView.Adapter<StationDepartureAdapter.Stat
     }
 
     override fun onBindViewHolder(holder: StationDepartureViewHolder, position: Int) {
+
         if (position % 2 == 0)  {
 
             holder.layout.setBackgroundColor(Color.parseColor("#EDEDED"))
