@@ -8,17 +8,20 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.station_app.R
+import com.example.station_app.api.responses.StationDeparture
 
 
 class StationDepartureAdapter :
     RecyclerView.Adapter<StationDepartureAdapter.StationDepartureViewHolder>() {
 
 
-    private val data = ('A').rangeTo('C').toList()
+    private var stationDepartures = ArrayList<StationDeparture>()
     private val TAG = "StationDepartureAdapter"
 
 
+
     class StationDepartureViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var dd: TextView = view.findViewById(R.id.action_bar)
         var departureTime: TextView = view.findViewById(R.id.departure_time)
         var destination: TextView = view.findViewById(R.id.destination)
         var trackNumber: TextView = view.findViewById(R.id.track_no)
@@ -41,17 +44,22 @@ class StationDepartureAdapter :
         } else {
             holder.layout.setBackgroundColor(Color.parseColor("#FFFFFF"))
         }
-        val value = data[position]
-        holder.departureTime.text = "departureTime"
-        holder.destination.text = "destination"
-        holder.trackNumber.text = "trackNumber"
+        val stationDeparture = stationDepartures[position]
+        holder.departureTime.text = stationDeparture.departureTime
+        holder.destination.text = stationDeparture.finalDestination
+        holder.trackNumber.text = stationDeparture.trackNumber
         //holder.text.setOnClickListener {  }
 
 
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return stationDepartures.size
+    }
+
+    fun setData( stationDepartures: ArrayList<StationDeparture> ) {
+        this.stationDepartures = stationDepartures
+        notifyDataSetChanged()
     }
 
 }

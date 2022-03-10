@@ -1,10 +1,12 @@
 package com.example.station_app.api
 
 
+import android.util.Log
 import com.example.station_app.api.responses.StationDeparture
 import com.example.station_app.api.responses.Trafikverket.train_announcement.Root
 import com.example.station_app.api.responses.Trafikverket.train_announcement.TrainAnnouncement
 import com.example.station_app.api.services.ApiService
+import com.example.station_app.ui.station_departure.adapters.StationDepartureAdapter
 import com.google.gson.Gson
 import io.github.cdimascio.dotenv.dotenv
 import okhttp3.*
@@ -19,18 +21,19 @@ import java.text.SimpleDateFormat
 import kotlin.collections.HashMap
 
 class ApiClient(baseUrl: String) {
-    private val client = Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(
-        GsonConverterFactory.create()
-    ).build()
+
     private val dotenv = dotenv {
         directory = "./assets"
         filename = "env"
     }
+    private val client = Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(
+        GsonConverterFactory.create()
+    ).build()
     private val trafficSignaturesTranslation = HashMap<String, String>()
     val apiKey: String = dotenv["TF_API_KEY"]
 
 
-    fun postTF(body: String) {
+    fun postTF(body: String,stationDepartureAdapter: StationDepartureAdapter) {
         addTrafficSignatures()
 
         val api = client.create(ApiService::class.java)
@@ -39,7 +42,9 @@ class ApiClient(baseUrl: String) {
 
         response.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                val stationDepartures = parseJson(response).toString()
+                val stationDepartures = parseJson(response)
+                Log.d("hade",stationDepartures.toString())
+                stationDepartureAdapter.setData(stationDepartures)
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -48,6 +53,7 @@ class ApiClient(baseUrl: String) {
 
         })
     }
+
 
     fun addTrafficSignatures() {
         trafficSignaturesTranslation["Söc"] = "Södertälje centrum"
@@ -65,12 +71,9 @@ class ApiClient(baseUrl: String) {
         val df1: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 
         for (trainAnnouncement: TrainAnnouncement in root.RESPONSE.RESULT[0].TrainAnnouncement) {
-            val stationName =
-                trafficSignaturesTranslation[trainAnnouncement.LocationSignature].toString();
-            val finalDestination =
-                trafficSignaturesTranslation[trainAnnouncement.ToLocation[0].LocationName].toString()
-            val departureTime =
-                df1.parse(trainAnnouncement.AdvertisedTimeAtLocation).toString().substring(11, 16)
+            val stationName = trafficSignaturesTranslation[trainAnnouncement.LocationSignature].toString();
+            val finalDestination = trafficSignaturesTranslation[trainAnnouncement.ToLocation[0].LocationName].toString()
+            val departureTime = df1.parse(trainAnnouncement.AdvertisedTimeAtLocation).toString().substring(11, 16)
             val trackNumber = trainAnnouncement.TrackAtLocation;
 
             stationDepartures.add(
@@ -86,5 +89,5 @@ class ApiClient(baseUrl: String) {
         return stationDepartures
     }
 
-
 }
+

@@ -10,6 +10,7 @@ import com.example.station_app.ui.station_departure.adapters.StationDepartureAda
 import com.example.station_app.databinding.ActivityMainBinding
 import com.google.gson.Gson
 
+private val stationAdapter = StationDepartureAdapter()
 private val TAG = "MainAcitivty"
 
 class MainActivity : AppCompatActivity() {
@@ -34,12 +35,15 @@ class MainActivity : AppCompatActivity() {
                 " </QUERY>\n" +
                 "</REQUEST>"
 
-        client.postTF(requestBody);
+
+        client.postTF(requestBody, stationAdapter)
+
+
 
         setContentView(binding.root)
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = StationDepartureAdapter()
+        recyclerView.adapter = stationAdapter
 
 
     }
