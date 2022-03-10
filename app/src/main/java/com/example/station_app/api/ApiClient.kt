@@ -43,7 +43,6 @@ class ApiClient(baseUrl: String) {
         response.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 val stationDepartures = parseJson(response)
-                Log.d("hade",stationDepartures.toString())
                 stationDepartureAdapter.setData(stationDepartures)
             }
 
@@ -62,6 +61,7 @@ class ApiClient(baseUrl: String) {
         trafficSignaturesTranslation["Mr"] = "Märsta"
         trafficSignaturesTranslation["U"] = "Uppsala C"
         trafficSignaturesTranslation["Upv"] = "Upplands Väsby"
+        trafficSignaturesTranslation["X"] = "X"
     }
 
     fun parseJson(response: Response<ResponseBody>): ArrayList<StationDeparture> {
@@ -72,9 +72,12 @@ class ApiClient(baseUrl: String) {
 
         for (trainAnnouncement: TrainAnnouncement in root.RESPONSE.RESULT[0].TrainAnnouncement) {
             val stationName = trafficSignaturesTranslation[trainAnnouncement.LocationSignature].toString();
-            val finalDestination = trafficSignaturesTranslation[trainAnnouncement.ToLocation[0].LocationName].toString()
+
+            val finalDestination = trafficSignaturesTranslation[trainAnnouncement.ToLocation?.get(0)?.LocationName?: "X"].toString()
+
+
             val departureTime = df1.parse(trainAnnouncement.AdvertisedTimeAtLocation).toString().substring(11, 16)
-            val trackNumber = trainAnnouncement.TrackAtLocation;
+            val trackNumber  = trainAnnouncement.TrackAtLocation ?: "X"
 
             stationDepartures.add(
                 StationDeparture(

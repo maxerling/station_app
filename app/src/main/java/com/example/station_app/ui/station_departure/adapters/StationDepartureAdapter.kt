@@ -9,16 +9,15 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.station_app.R
 import com.example.station_app.api.responses.StationDeparture
+import com.example.station_app.ui.station_departure.activites.MainActivity
 
+private val TAG = "StationDepartureAdapter"
 
-class StationDepartureAdapter :
+class StationDepartureAdapter() :
+
     RecyclerView.Adapter<StationDepartureAdapter.StationDepartureViewHolder>() {
 
-
     private var stationDepartures = ArrayList<StationDeparture>()
-    private val TAG = "StationDepartureAdapter"
-
-
 
     class StationDepartureViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var departureTime: TextView = view.findViewById(R.id.departure_time)
@@ -46,7 +45,7 @@ class StationDepartureAdapter :
         val stationDeparture = stationDepartures[position]
         holder.departureTime.text = stationDeparture.departureTime
         holder.destination.text = stationDeparture.finalDestination
-        holder.trackNumber.text = stationDeparture.trackNumber
+        holder.trackNumber.text = "Spår: ${stationDeparture.trackNumber}"
         //holder.text.setOnClickListener {  }
 
 
