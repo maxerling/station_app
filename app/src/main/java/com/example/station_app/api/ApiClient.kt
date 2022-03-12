@@ -61,6 +61,7 @@ class ApiClient(baseUrl: String) {
         trafficSignaturesTranslation["Mr"] = "Märsta"
         trafficSignaturesTranslation["U"] = "Uppsala C"
         trafficSignaturesTranslation["Upv"] = "Upplands Väsby"
+        trafficSignaturesTranslation["Kn"] = "Knivsta"
         trafficSignaturesTranslation["X"] = "X"
     }
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">station_app</string>
+    <string name="track_no">Spår: %1$s</string>
 </resources>

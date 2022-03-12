@@ -38,9 +38,6 @@ open class MainActivity : AppCompatActivity()  {
 
 
         client.postTF(requestBody, stationAdapter)
-        setTitle("Södertälje Centrum") // ?
-
-
         setContentView(binding.root)
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
