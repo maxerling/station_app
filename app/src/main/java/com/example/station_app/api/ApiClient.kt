@@ -62,7 +62,9 @@ class ApiClient(baseUrl: String) {
         trafficSignaturesTranslation["U"] = "Uppsala C"
         trafficSignaturesTranslation["Upv"] = "Upplands Väsby"
         trafficSignaturesTranslation["Kn"] = "Knivsta"
+        trafficSignaturesTranslation["Jn"] = "Järna"
         trafficSignaturesTranslation["X"] = "X"
+
     }
 
     fun parseJson(response: Response<ResponseBody>): ArrayList<StationDeparture> {
@@ -73,7 +75,7 @@ class ApiClient(baseUrl: String) {
 
         for (trainAnnouncement: TrainAnnouncement in root.RESPONSE.RESULT[0].TrainAnnouncement) {
             val stationName = trafficSignaturesTranslation[trainAnnouncement.LocationSignature].toString();
-
+            Log.d("trafficSignature", trainAnnouncement.ToLocation?.get(0)?.LocationName.toString())
             val finalDestination = trafficSignaturesTranslation[trainAnnouncement.ToLocation?.get(0)?.LocationName?: "X"].toString()
 
 
